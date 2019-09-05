@@ -1,3 +1,4 @@
+  
 package question1;
 
 public class SoldeDebiteurException extends Exception{

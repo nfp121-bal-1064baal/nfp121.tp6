@@ -1,7 +1,7 @@
 package question4;
 
-import question1.Contributeur;
-import question1.GroupeDeContributeurs;
+import question1.*;
+
 import question2.*;
 import question3.*;
 import static question2.Main.*;
@@ -16,8 +16,8 @@ import java.io.ByteArrayOutputStream;
 public class IHM extends JFrame {
 
     private JTextArea resultat = new JTextArea("", 7,60);
-    private JButton debiter = new JButton("dÃ©biter");
-    private JButton crediter = new JButton("crÃ©diter");
+    private JButton debiter = new JButton("débiter");
+    private JButton crediter = new JButton("créditer");
     private JTextField somme = new JTextField(4);
 
     private GroupeDeContributeurs g;
@@ -48,8 +48,34 @@ public class IHM extends JFrame {
             resultat.setText(Main.arbreXML(g)); //actualiser();
         }catch(Exception e){}
 
-        debiter.addActionListener(null/* a completer */);
-        crediter.addActionListener(null/* a completer */);
+        debiter.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                try
+                {
+                    g.debit(Integer.parseInt(somme.getText().toString()));
+                    resultat.setText(Main.arbreXML(g));
+                }
+                catch(SoldeDebiteurException ex){
+                    ex.printStackTrace();
+                }
+                catch(Exception ex2){
+                    ex2.printStackTrace();
+                }
+            }
+        });
+        crediter.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                try
+                {
+                    g.credit(Integer.parseInt(somme.getText().toString()));
+                    resultat.setText(Main.arbreXML(g));
+                    
+                }
+                catch(Exception ex){
+                    ex.printStackTrace();
+                }
+            }
+        });
 
             
         this.pack();

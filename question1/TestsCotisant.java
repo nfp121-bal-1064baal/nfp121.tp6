@@ -445,4 +445,3 @@ public class TestsCotisant extends junit.framework.TestCase{
         }
     }
 }
-

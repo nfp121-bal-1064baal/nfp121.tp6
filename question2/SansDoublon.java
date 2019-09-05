@@ -6,12 +6,12 @@ import java.util.TreeSet;
 
 public class SansDoublon implements Visiteur<Boolean>{
   public Boolean visite(Contributeur c){
-    return false; // a complÃ©ter;
+    return false; // a compléter;
   }
   
   public Boolean visite(GroupeDeContributeurs g){
-    boolean res = false;// a complÃ©ter
-    // a complÃ©ter
+    boolean res = false;// a compléter
+    // a compléter
     return res ;
   }
   

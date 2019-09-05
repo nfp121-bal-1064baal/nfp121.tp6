@@ -27,4 +27,3 @@ public class VisiteurToXML implements Visiteur<Element> {
         return elt;
     }  
 }
-

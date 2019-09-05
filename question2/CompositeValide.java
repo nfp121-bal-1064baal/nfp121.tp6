@@ -1,6 +1,6 @@
 package question2;
 
-import question1.Contributeur;
+import question1.*;
 import question1.GroupeDeContributeurs;
 import question1.Visiteur;
 
@@ -9,12 +9,31 @@ public class CompositeValide implements Visiteur<Boolean>{
   // et il n’existe pas de groupe n’ayant pas de contributeurs.
   
   public Boolean visite(Contributeur c){
-    return false; // a compléter;
+      if(c.solde()>=0)
+        return true;
+      return false;
   }
   
   public Boolean visite(GroupeDeContributeurs g){
-    boolean res = false;// a compléter
-    // a compléter
+    boolean res = true;
+    if(g.getChildren().size()==0)
+        res=false;
+    else{
+        for(Cotisant c:g.getChildren()){
+            if(c instanceof  Contributeur){
+                
+                res=visite((Contributeur)c);
+                if(!res)
+                    break;
+            }
+            else{
+                
+                res=visite((GroupeDeContributeurs)c);
+                if(!res)
+                    break;
+            }
+        }
+    }
     return res ;
   }
 }

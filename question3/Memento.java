@@ -8,13 +8,16 @@ public class Memento {
      //        d’un premier visiteur pour la sauvegarde et 
      //        d’un second pour la restitution du composite, 
      //        représentent une solution possible. 
+     private HashMap<Cotisant,Integer> state; 
      
      public Memento(Cotisant c) {
        // sauvegarde
+         this.state = c.accepter(new VisiteurSauvegarde()); 
      }
 
      public void setState(Cotisant c) {
        // restitution
+        c.accepter(new VisiteurRestitution(this.state));
      }
     
     }
